@@ -8,5 +8,5 @@ CREATE TABLE person
     phone char(8) PRIMARY KEY NOT NULL,
     firstname VARCHAR(30) NOT NULL,
     lastname VARCHAR(30) NOT NULL,
-    gender VARCHAR NOT NULL
+    gender VARCHAR(1) NOT NULL
 );
