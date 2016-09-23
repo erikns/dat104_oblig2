@@ -1,6 +1,8 @@
 package no.hib.dat104.oblig2.models;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 public class SignupDataViewModel {
     private String firstName = "";
@@ -119,8 +121,12 @@ public class SignupDataViewModel {
     }
 
     private static String urlEncodeParameter(String param, String value) {
-        // TODO: do proper url encoding
-        return param + "=" + value;
+        try {
+            String encodedValue = URLEncoder.encode(value, "UTF-8");
+            return param + "=" + encodedValue;
+        } catch (UnsupportedEncodingException e) {
+            return param + "=" + "unsuppEncoding";
+        }
     }
 
     public String getFirstNameError() {
