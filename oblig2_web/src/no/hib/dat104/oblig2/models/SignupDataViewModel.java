@@ -1,0 +1,173 @@
+package no.hib.dat104.oblig2.models;
+
+import javax.servlet.http.HttpServletRequest;
+
+public class SignupDataViewModel {
+    private String firstName = "";
+    private String firstNameError = "";
+    private String lastName = "";
+    private String lastNameError = "";
+    private String phone = "";
+    private String phoneError = "";
+    private String gender = "";
+    private String genderError = "";
+
+    private SignupDataViewModel() { }
+
+    private SignupDataViewModel(String firstName, String lastName, String phone, String gender) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.gender = gender;
+
+        if (this.firstName == null) this.firstName = "";
+        if (this.lastName == null) this.lastName = "";
+        if (this.phone == null) this.phone = "";
+        if (this.gender == null) this. gender = "";
+    }
+
+    public static SignupDataViewModel buildEmpty() {
+        return new SignupDataViewModel();
+    }
+
+    public static SignupDataViewModel build(String firstName, String lastName, String phone, String gender) {
+        return new SignupDataViewModel(firstName, lastName, phone, gender);
+    }
+
+    public static SignupDataViewModel buildFromRequestParameters(HttpServletRequest req) {
+        SignupDataViewModel vm = new SignupDataViewModel();
+
+        vm.setFirstName(getStringParameter(req, "firstName"));
+        vm.setFirstNameError(getStringParameter(req, "firstNameError"));
+        vm.setLastName(getStringParameter(req, "lastName"));
+        vm.setLastNameError(getStringParameter(req, "lastNameError"));
+        vm.setPhone(getStringParameter(req, "phone"));
+        vm.setPhoneError(getStringParameter(req, "phoneError"));
+        vm.setGender(getStringParameter(req, "gender"));
+        vm.setGenderError(getStringParameter(req, "genderError"));
+
+        return vm;
+    }
+
+    private static String getStringParameter(HttpServletRequest req, String parameter) {
+        if (req.getParameter(parameter) != null) {
+            return req.getParameter(parameter); // TODO: escape?
+        } else {
+            return "";
+        }
+    }
+
+    /**
+     * Perform validation of the view model. The view model will change state after this message is called.
+     * The error fields are populated with any errors that occur. The fields containing errors are also emptied
+     * out during this process.
+     * @return True if there are no errors, false otherwise
+     */
+    public boolean validate() {
+        boolean resultFirstName = true;
+        if (firstName.length() < 1) {
+            resultFirstName = false;
+            firstNameError = "Fornavn kan ikke være tomt";
+        }
+
+        boolean resultLastName = true;
+        if (lastName.length() < 1) {
+            resultLastName = false;
+            lastNameError = "Etternavn kan ikke være tomt";
+        }
+
+        boolean resultPhone = true;
+        if (phone.length() != 8) {
+            resultPhone = false;
+            phoneError = "Mobil må være akkurat 8 tegn";
+        }
+
+        boolean resultGender = true;
+        if (!(gender.equals("M") || gender.equals("F"))) {
+            resultGender = false;
+            genderError = "Kjønn må være mann eller kvinne";
+        }
+
+        return resultFirstName && resultLastName && resultPhone && resultGender;
+    }
+
+    public String urlEncode() {
+        return urlEncodeParameter("firstName", firstName) + "&" +
+                urlEncodeParameter("firstNameError", firstNameError) + "&" +
+                urlEncodeParameter("lastName", lastName) + "&" +
+                urlEncodeParameter("lastNameError", lastNameError) + "&" +
+                urlEncodeParameter("phone", phone) + "&" +
+                urlEncodeParameter("phoneError", phoneError) + "&" +
+                urlEncodeParameter("gender", gender) + "&" +
+                urlEncodeParameter("genderError", genderError);
+    }
+
+    private static String urlEncodeParameter(String param, String value) {
+        // TODO: do proper url encoding
+        return param + "=" + value;
+    }
+
+    public String getFirstNameError() {
+        return firstNameError;
+    }
+
+    private void setFirstNameError(String firstNameError) {
+        this.firstNameError = firstNameError;
+    }
+
+    public String getLastNameError() {
+        return lastNameError;
+    }
+
+    private void setLastNameError(String lastNameError) {
+        this.lastNameError = lastNameError;
+    }
+
+    public String getPhoneError() {
+        return phoneError;
+    }
+
+    private void setPhoneError(String phoneError) {
+        this.phoneError = phoneError;
+    }
+
+    public String getGenderError() {
+        return genderError;
+    }
+
+    private void setGenderError(String genderError) {
+        this.genderError = genderError;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    private void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    private void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    private void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    private void setGender(String gender) {
+        this.gender = gender;
+    }
+}
