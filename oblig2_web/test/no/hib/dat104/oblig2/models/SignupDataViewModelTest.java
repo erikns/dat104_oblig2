@@ -3,12 +3,8 @@ package no.hib.dat104.oblig2.models;
 import junit.framework.AssertionFailedError;
 import org.junit.Test;
 
-import javax.swing.*;
-
 import static junit.framework.TestCase.assertFalse;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class SignupDataViewModelTest {
     @Test
