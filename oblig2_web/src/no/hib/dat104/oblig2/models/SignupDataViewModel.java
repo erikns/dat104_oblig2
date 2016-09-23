@@ -80,6 +80,12 @@ public class SignupDataViewModel {
         if (phone.length() != 8) {
             resultPhone = false;
             phoneError = "Mobil må være akkurat 8 tegn";
+        } else if (!(phone.startsWith("4") || phone.startsWith("9"))) {
+            resultPhone = false;
+            phoneError = "Mobil må begynne på 4 eller 9";
+        } else if (!isNumeric(phone)) {
+            resultPhone = false;
+            phoneError = "Mobil kan bare bestå av tall";
         }
 
         boolean resultGender = true;
@@ -89,6 +95,16 @@ public class SignupDataViewModel {
         }
 
         return resultFirstName && resultLastName && resultPhone && resultGender;
+    }
+
+    private static boolean isNumeric(String phone) {
+        try {
+            //noinspection ResultOfMethodCallIgnored
+            Integer.parseUnsignedInt(phone);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     public String urlEncode() {
