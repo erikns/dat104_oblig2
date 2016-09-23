@@ -1,7 +1,9 @@
 package no.hib.dat104.oblig2;
 
+import no.hib.dat104.oblig2.models.ParticipantEntity;
 import no.hib.dat104.oblig2.models.SignupDataViewModel;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +13,9 @@ import java.io.IOException;
 
 @WebServlet("/signup")
 public class SignupServlet extends HttpServlet {
+    @EJB
+    private ParticipantService participantService;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // Grab passed in parameters to pre populate the fields if necessary
@@ -27,6 +32,14 @@ public class SignupServlet extends HttpServlet {
 
         if (validationResult) {
             // happy path
+            ParticipantEntity participantEntity = new ParticipantEntity();
+            participantEntity.setFirstName(vm.getFirstName());
+            participantEntity.setLastName(vm.getLastName());
+            participantEntity.setPhone(vm.getPhone());
+            participantEntity.setGender(vm.getPhone());
+
+            participantService.signup(participantEntity);
+
             req.getRequestDispatcher("WEB-INF/signup-ok.jsp").forward(req, resp);
         } else {
             // error validating. send redirect with url encoded vm
