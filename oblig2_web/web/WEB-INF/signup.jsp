@@ -19,7 +19,7 @@
 <head>
     <title>Festpåmelding</title>
     <link href="https://fonts.googleapis.com/css?family=Lobster|Noto+Serif" rel="stylesheet">
-    <link href="../style.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
 <header>
