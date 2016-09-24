@@ -1,4 +1,4 @@
-package no.hib.dat104.oblig2;
+package no.hib.dat104.oblig2.util;
 
 import junit.framework.AssertionFailedError;
 import org.junit.Test;

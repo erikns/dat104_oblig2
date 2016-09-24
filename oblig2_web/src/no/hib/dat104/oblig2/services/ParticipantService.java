@@ -1,4 +1,4 @@
-package no.hib.dat104.oblig2;
+package no.hib.dat104.oblig2.services;
 
 import no.hib.dat104.oblig2.models.ParticipantEntity;
 import no.hib.dat104.oblig2.models.ParticipantPublicViewModel;

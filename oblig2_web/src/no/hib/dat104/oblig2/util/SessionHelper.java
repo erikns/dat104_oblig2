@@ -1,4 +1,4 @@
-package no.hib.dat104.oblig2;
+package no.hib.dat104.oblig2.util;
 
 import javax.servlet.http.HttpSession;
 

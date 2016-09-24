@@ -1,4 +1,6 @@
-package no.hib.dat104.oblig2;
+package no.hib.dat104.oblig2.servlets;
+
+import no.hib.dat104.oblig2.util.SessionHelper;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

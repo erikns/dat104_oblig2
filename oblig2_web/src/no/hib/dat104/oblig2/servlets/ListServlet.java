@@ -1,6 +1,8 @@
-package no.hib.dat104.oblig2;
+package no.hib.dat104.oblig2.servlets;
 
 
+import no.hib.dat104.oblig2.services.ParticipantService;
+import no.hib.dat104.oblig2.util.SessionHelper;
 import no.hib.dat104.oblig2.models.ParticipantPublicViewModel;
 
 import javax.ejb.EJB;
