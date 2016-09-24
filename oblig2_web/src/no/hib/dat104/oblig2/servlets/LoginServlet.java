@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet{
             resp.sendRedirect("/list");
         } else {
             // probably not signed up.
-            resp.sendRedirect("/login?msg=" + URLEncoder.encode(phone, "UTF-8"));
+            resp.sendRedirect("/login?msg=" + URLEncoder.encode("Feil mobilnummer. Er du påmeldt?", "UTF-8"));
         }
     }
 }
