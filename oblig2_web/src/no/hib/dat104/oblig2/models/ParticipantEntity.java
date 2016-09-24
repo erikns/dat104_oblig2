@@ -12,14 +12,16 @@ public class ParticipantEntity {
     private String firstName;
     private String lastName;
     private String gender;
+    private boolean paid;
 
     public ParticipantEntity() {}
 
-    public ParticipantEntity(String phone, String firstName, String lastName, String gender) {
+    public ParticipantEntity(String phone, String firstName, String lastName, String gender, boolean paid) {
         this.phone = phone;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
+        this.paid = paid;
     }
 
     public String getPhone() {
@@ -52,5 +54,13 @@ public class ParticipantEntity {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public boolean isPaid() {
+        return paid;
+    }
+
+    public void setPaid(boolean paid) {
+        this.paid = paid;
     }
 }

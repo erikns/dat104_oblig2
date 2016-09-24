@@ -37,6 +37,7 @@ public class SignupServlet extends HttpServlet {
             participantEntity.setLastName(vm.getLastName());
             participantEntity.setPhone(vm.getPhone());
             participantEntity.setGender(vm.getGender());
+            participantEntity.setPaid(false); // initially not paid
 
             participantService.signup(participantEntity);
 

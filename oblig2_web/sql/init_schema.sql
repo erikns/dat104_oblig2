@@ -5,8 +5,9 @@ SET SEARCH_PATH TO 'party';
 
 CREATE TABLE person
 (
-    phone char(8) PRIMARY KEY NOT NULL,
-    firstname VARCHAR(30) NOT NULL,
-    lastname VARCHAR(30) NOT NULL,
-    gender VARCHAR(1) NOT NULL
+  phone char(8) PRIMARY KEY NOT NULL,
+  firstname VARCHAR(30) NOT NULL,
+  lastname VARCHAR(30) NOT NULL,
+  gender VARCHAR(1) NOT NULL,
+  paid BOOLEAN NOT NULL
 );
