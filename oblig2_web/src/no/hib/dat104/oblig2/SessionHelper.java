@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 public class SessionHelper {
     private static final String LOGGED_IN = "loggedIn";
     private static final String USER_NAME = "username";
+    private static final String IS_ADMIN = "isAdmin";
     private final HttpSession session;
 
     public SessionHelper(HttpSession session) {
@@ -14,6 +15,11 @@ public class SessionHelper {
     public boolean isLoggedIn() {
         Object loggedIn = session.getAttribute(LOGGED_IN);
         return loggedIn != null && (boolean) loggedIn;
+    }
+
+    public boolean isAdmin() {
+        Object isAdmin = session.getAttribute(IS_ADMIN);
+        return isAdmin != null && (boolean) isAdmin;
     }
 
     public String getLoggedInUser() {
@@ -27,5 +33,10 @@ public class SessionHelper {
 
     public void logOut() {
         session.invalidate();
+    }
+
+    public void logInAdmin() {
+        session.setAttribute(IS_ADMIN, true);
+        session.setAttribute(LOGGED_IN, true);
     }
 }
