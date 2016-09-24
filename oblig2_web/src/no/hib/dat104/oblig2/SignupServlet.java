@@ -41,6 +41,9 @@ public class SignupServlet extends HttpServlet {
 
             participantService.signup(participantEntity);
 
+            SessionHelper sessionHelper = new SessionHelper(req.getSession());
+            sessionHelper.logIn();
+
             // TODO: Handle already signed up case (EntityExistsException)
 
             req.getRequestDispatcher("WEB-INF/signup-ok.jsp").forward(req, resp);
