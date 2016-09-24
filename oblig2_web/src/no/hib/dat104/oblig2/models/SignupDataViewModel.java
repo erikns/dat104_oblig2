@@ -60,7 +60,7 @@ public class SignupDataViewModel {
     }
 
     /**
-     * Perform validation of the view model. The view model will change state after this message is called.
+     * Perform validation of the view model. The view model will change state after this method is called.
      * The error fields are populated with any errors that occur. The fields containing errors are also emptied
      * out during this process.
      * @return True if there are no errors, false otherwise
