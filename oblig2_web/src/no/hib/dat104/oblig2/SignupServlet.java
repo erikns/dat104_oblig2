@@ -42,7 +42,7 @@ public class SignupServlet extends HttpServlet {
             participantService.signup(participantEntity);
 
             SessionHelper sessionHelper = new SessionHelper(req.getSession());
-            sessionHelper.logIn();
+            sessionHelper.logIn(participantEntity.getPhone());
 
             // TODO: Handle already signed up case (EntityExistsException)
 
