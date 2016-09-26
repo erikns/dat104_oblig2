@@ -1,19 +1,5 @@
-<%@ page import="no.hib.dat104.oblig2.models.SignupDataViewModel" %>
 <jsp:useBean id="vm" scope="request" type="no.hib.dat104.oblig2.models.SignupDataViewModel"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%!
-    private SignupDataViewModel getViewModel(HttpServletRequest request) {
-        return (SignupDataViewModel) request.getAttribute("vm");
-    }
-
-    private String maleCheckedString(String gender) {
-        return gender.equals("M") ? "checked" : "";
-    }
-
-    private String femaleCheckedString(String gender) {
-        return gender.equals("F") ? "checked" : "";
-    }
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,9 +23,9 @@
         <p>Mobil: <input type="text" name="phone" value="${vm.phone}">
             <span class="error">${vm.phoneError}</span></p>
         <p>Kjønn: <input type="radio" name="gender" value="M"
-            <%= maleCheckedString(getViewModel(request).getGender()) %>> Mann
+            ${vm.gender.equals("M") ? "checked" : ""}> Mann
             <input type="radio" name="gender" value="F"
-            <%= femaleCheckedString(getViewModel(request).getGender()) %>> Kvinne
+            ${vm.gender.equals("F") ? "checked" : ""}> Kvinne
             <span class="error">${vm.genderError}</span></p>
         <p><input type="submit" value="Meld deg på!"></p>
     </form>
