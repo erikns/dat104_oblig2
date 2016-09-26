@@ -92,10 +92,32 @@ input[type=submit]:hover {
 }
 
 /* table styling */
+table {
+    margin: 0;
+    border-spacing: 0;
+}
+
+td {
+    padding: 0.5em;
+    margin: 0;
+}
+
+td.gender {
+    text-align: center;
+}
+
+tr.top th {
+    padding: 0.5em;
+    margin: 0;
+    text-align: left;
+    border-bottom: 2px solid #222222;
+    margin-bottom: 0.25em;
+}
+
 tr.red {
-    background-color: red;
+    background-color: #ff8582;
 }
 
 tr.green {
-    background-color: green;
+    background-color: #80ff80;
 }

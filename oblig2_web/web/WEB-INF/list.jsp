@@ -5,6 +5,7 @@
 <html>
 <head>
     <title>Festpåmelding</title>
+    <script src="https://use.fontawesome.com/a273eb4620.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Lobster|Noto+Serif" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
 </head>
@@ -15,7 +16,7 @@
 <article>
     <h1>Deltakerliste</h1>
     <table>
-        <tr><th>Kjønn</th><th>Navn</th></tr>
+        <tr class="top"><th>Kjønn</th><th>Navn</th></tr>
         <c:forEach items="${vm}" var="participant">
             <c:choose>
                 <c:when test="${participant.isUser(loggedInUser)}">
@@ -32,7 +33,19 @@
                     <tr>
                 </c:otherwise>
             </c:choose>
-                <td>${participant.gender}</td><!-- TODO: add gender symbol -->
+                <td class="gender">
+                    <c:choose>
+                        <c:when test="${participant.gender == 'F'}">
+                            <i class="fa fa-venus fa-fw"></i>
+                        </c:when>
+                        <c:when test="${participant.gender == 'M'}">
+                            <i class="fa fa-mars fa-fw"></i>
+                        </c:when>
+                        <c:otherwise>
+                            <i class="fa fa-question fa-fw"></i>
+                        </c:otherwise>
+                    </c:choose>
+                </td>
                 <td>${participant.firstName} ${participant.lastName}</td>
             </tr>
         </c:forEach>
