@@ -35,10 +35,10 @@ public class LoginServlet extends HttpServlet{
         if (participantEntity != null && participantEntity.getPhone().equals(phone)) {
             // log in
             sessionHelper.logIn(phone);
-            resp.sendRedirect("/list");
+            resp.sendRedirect("list");
         } else {
             // probably not signed up.
-            resp.sendRedirect("/login?msg=" + URLEncoder.encode("Feil mobilnummer. Er du påmeldt?", "UTF-8"));
+            resp.sendRedirect("login?msg=" + URLEncoder.encode("Feil mobilnummer. Er du påmeldt?", "UTF-8"));
         }
     }
 }

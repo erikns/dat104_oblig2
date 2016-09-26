@@ -34,7 +34,7 @@ public class ListServlet extends HttpServlet {
             req.getRequestDispatcher("WEB-INF/list.jsp").forward(req, resp);
         } else {
             // not logged in. Redirect to login screen
-            resp.sendRedirect("/login");
+            resp.sendRedirect("login");
         }
     }
 }
