@@ -93,9 +93,9 @@ input[type=submit]:hover {
 
 /* table styling */
 tr.red {
-    background-color: red;
+    background-color: #ff8582;
 }
 
 tr.green {
-    background-color: green;
+    background-color: #80ff80;
 }
