@@ -33,7 +33,24 @@ public class ParticipantService {
         return result;
     }
 
+    public List<ParticipantEntity> getAllParticipants() {
+        Query query = em.createQuery("SELECT p FROM ParticipantEntity p");
+        List queryResult = query.getResultList();
+
+        List<ParticipantEntity> resultList = new ArrayList<>();
+        for (Object p : queryResult)  {
+            ParticipantEntity participant = (ParticipantEntity) p;
+            resultList.add(participant);
+        }
+
+        return resultList;
+    }
+
     public ParticipantEntity getParticipant(String phone) {
         return em.find(ParticipantEntity.class, phone);
+    }
+
+    public void updateParticipant(ParticipantEntity participant) {
+        em.merge(participant);
     }
 }
