@@ -38,5 +38,6 @@ public class SessionHelper {
     public void logInAdmin() {
         session.setAttribute(IS_ADMIN, true);
         session.setAttribute(LOGGED_IN, true);
+        session.setAttribute(USER_NAME, "admin");
     }
 }

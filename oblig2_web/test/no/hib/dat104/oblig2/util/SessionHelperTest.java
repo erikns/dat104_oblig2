@@ -65,6 +65,14 @@ public class SessionHelperTest {
         assertFalse(session.isAdmin());
     }
 
+    @Test
+    public void adminLoginUserReturnedIsAdminUser() {
+        SessionHelper session = new SessionHelper(new TestHttpSession());
+        session.logInAdmin();
+
+        assertStringEquals("admin", session.getLoggedInUser());
+    }
+
     private static void assertStringEquals(String expected, String actual) {
         if (!expected.equals(actual)) {
             throw new AssertionFailedError("Expected string to be '" + expected + ", but was '" + actual + "'");
