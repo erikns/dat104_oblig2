@@ -13,10 +13,6 @@ import java.net.URLEncoder;
 
 @WebServlet("/adminlogin")
 public class AdminLoginServlet extends HttpServlet {
-
-    //TODO endre implementasjon av denne variabelen... init?
-    String admin = "ADMIN";
-
     //tar i mot submit fra adminlogin og sjekker passord
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
@@ -24,14 +20,14 @@ public class AdminLoginServlet extends HttpServlet {
         SessionHelper sessionHelper = new SessionHelper(req.getSession());
 
         //hva er forskjell paa getParameter og getAttribute?
-        String adminpassord = req.getParameter("adminpassord");
+        String password = req.getParameter("adminpassord");
 
-        if (adminpassord.equals(admin)){
-            //happy path
+        if (password.equals(getAdminPassword())){
+            // valid password
             sessionHelper.logInAdmin();
             resp.sendRedirect("admin");
         }else{
-            //ikke admin
+            // invalid password
             resp.sendRedirect("adminlogin?msg=" + URLEncoder.encode("Feil passord. Prøv igjen.", "UTF-8"));
         }
     }//doPost
@@ -42,5 +38,9 @@ public class AdminLoginServlet extends HttpServlet {
             throws ServletException, IOException {
         req.setAttribute("msg", req.getParameter("msg"));
         req.getRequestDispatcher("WEB-INF/adminlogin.jsp").forward(req, resp);
+    }
+
+    private String getAdminPassword() {
+        return getServletContext().getInitParameter("adminPassword");
     }
 }

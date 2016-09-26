@@ -7,6 +7,11 @@
         <location>/error.html</location>
     </error-page>
 
+    <context-param>
+        <param-name>adminPassword</param-name>
+        <param-value>ADMIN</param-value>
+    </context-param>
+
     <!--CharsetFilter start-->
 
     <filter>
