@@ -2,7 +2,7 @@
 <jsp:useBean id="msg" scope="request" class="java.lang.String"/>
 <html>
 <head>
-    <title>KassererLogin</title>
+    <title>Festpåmelding</title>
     <link href="https://fonts.googleapis.com/css?family=Lobster|Noto+Serif" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
 </head>
@@ -12,7 +12,7 @@
 </header>
 <article>
     <h1>Logg in som admin</h1>
-    <p>Skriv inn adminpassord for å komme til kasserersiden hvor du kan registrere betaling</p>
+    <p>Skriv inn kassererpassord for å komme til kasserersiden hvor du kan registrere betaling</p>
     <p><span class="error">${msg}</span></p>
     <form method="post" action="adminlogin">
         <p>Passord: <input type="password" name="adminpassord"></p>
