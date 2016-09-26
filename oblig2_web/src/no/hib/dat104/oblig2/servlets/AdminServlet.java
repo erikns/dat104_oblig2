@@ -23,7 +23,7 @@ public class AdminServlet extends HttpServlet {
         SessionHelper sessionHelper = new SessionHelper(req.getSession());
 
         if (sessionHelper.isAdmin()){
-            //TODO lage og vise admin side
+            req.getRequestDispatcher("WEB-INF/adminside.jsp").forward(req, resp);
         }else{
             //hvis bruker prover aa se side uten aa vaere logget inn
             resp.sendRedirect("adminlogin?msg=" + URLEncoder.encode("Du må logge inn som admin " +
