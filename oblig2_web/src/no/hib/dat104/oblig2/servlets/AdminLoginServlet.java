@@ -14,6 +14,7 @@ import java.net.URLEncoder;
 @WebServlet("/adminlogin")
 public class AdminLoginServlet extends HttpServlet {
 
+    //TODO endre implementasjon av denne variabelen... init?
     String admin = "ADMIN";
 
     //tar i mot submit fra adminlogin og sjekker passord
