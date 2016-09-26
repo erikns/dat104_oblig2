@@ -77,7 +77,7 @@ input[type=text]:focus {
     border-bottom: 2px solid #009595;
 }
 
-input[type=submit] {
+input[type=submit],input[type=password] {
     border: 0;
     font-family: "Noto Serif", serif;
     font-size: 16px;
