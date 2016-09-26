@@ -11,8 +11,8 @@
     <div>Kassererlogin</div>
 </header>
 <article>
-    <h1>Login for kasserer</h1>
-    <p>Skriv inn admin passord for å komme til kasserer-siden</p>
+    <h1>Log in som admin</h1>
+    <p>Skriv inn adminpassord for å komme til kasserersiden hvor du kan registrere betaling</p>
     <p><span class="error">${msg}</span></p>
     <form method="post" action="adminlogin">
         <p>Passord: <input type="text" name="adminpassord"></p>

@@ -28,14 +28,15 @@ public class AdminLoginServlet extends HttpServlet {
         if (adminpassord.equals(admin)){
             //happy path
             sessionHelper.logInAdmin();
-            //TODO: lage og sende til adminservlet
+            resp.sendRedirect("admin");
         }else{
             //ikke admin
             resp.sendRedirect("adminlogin?msg=" + URLEncoder.encode("Feil passord. Prøv igjen.", "UTF-8"));
         }
+    }//doPost
 
-    }
 
+    //tar i mot redirect og legger paa feilmelding for siden vises
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         req.setAttribute("msg", req.getParameter("msg"));
