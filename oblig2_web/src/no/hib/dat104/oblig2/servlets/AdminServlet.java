@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.List;
 
+import static java.lang.System.out;
+
 
 @WebServlet("/admin")
 public class AdminServlet extends HttpServlet {
@@ -22,7 +24,15 @@ public class AdminServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        //kanskje denne skal haandtere aa sende ut "bekreft betaling"
+        //her tar jeg i mot data fra adminside som skal behandles
+
+        String id = req.getParameter("id");
+
+        //TODO legge til behandling i stedet for utskrift av id her
+        out.println(id);
+
+
+        //resp.sendRedirect("admin");
     }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
