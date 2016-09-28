@@ -26,7 +26,7 @@
                         <td>Betaling mottatt</td>
                     </c:when>
                     <c:otherwise>
-                        <td>NEI!</td>
+                        <td><input type="submit" name=${participant.phone} value="Registrer-betaling" /></td>
                     </c:otherwise>
                 </c:choose>
 
