@@ -1,6 +1,8 @@
 <jsp:useBean id="vm" scope="request" type="java.util.List<no.hib.dat104.oblig2.models.ParticipantPublicViewModel>"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
     <title>Festpåmelding</title>
@@ -18,7 +20,11 @@
         <c:forEach items="${vm}" var="participant">
             <tr>
                 <td>${participant.firstName} ${participant.lastName}</td>
-                <td>${participant.phone}</td>
+                <td>
+                    <c:set var="phone" value="${participant.phone}" />
+                    <fmt:formatNumber type="number" pattern="000,00,000" value="${phone}" var="nf" />
+                    ${fn:replace(nf, ",", " ")}
+                </td>
 
                 <%--Hvem har betalt --%>
                 <c:choose>
