@@ -19,10 +19,21 @@
             <tr>
                 <td>${participant.firstName} ${participant.lastName}</td>
                 <td>${participant.phone}</td>
-                <td>${participant.paid}</td>
+
+                <%--Hvem har betalt --%>
+                <c:choose>
+                    <c:when test="${participant.paid}">
+                        <td>Betaling mottatt</td>
+                    </c:when>
+                    <c:otherwise>
+                        <td>NEI!</td>
+                    </c:otherwise>
+                </c:choose>
+
             </tr>
         </c:forEach>
     </table>
+
     <ul class="nav">
         <li><a href="logout">Ferdig</a></li>
     </ul>
