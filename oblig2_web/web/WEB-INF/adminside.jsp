@@ -26,7 +26,12 @@
                         <td>Betaling mottatt</td>
                     </c:when>
                     <c:otherwise>
-                        <td><input type="submit" name=${participant.phone} value="Registrer-betaling" /></td>
+                        <td>
+                            <form action="admin" method="post">
+                                <input type="hidden" name="id" value=${participant.phone}  />
+                                <input type="submit" value="Registrer-betaling" />
+                            </form>
+                        </td>
                     </c:otherwise>
                 </c:choose>
 
