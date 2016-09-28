@@ -28,6 +28,8 @@ public class ParticipantPublicViewModel {
         return gender;
     }
 
+    public String getPhone(){ return  phone; }
+
     public boolean isUser(String user) {
         return phone.equals(user);
     }
