@@ -17,7 +17,9 @@
         <tr class="top"><th>Navn</th><th>Mobil</th><th>Betalingsstatus</th></tr>
         <c:forEach items="${vm}" var="participant">
             <tr>
-
+                <td>${participant.firstName} ${participant.lastName}</td>
+                <td>${participant.phone}</td>
+                <td>${participant.paid}</td>
             </tr>
         </c:forEach>
     </table>
