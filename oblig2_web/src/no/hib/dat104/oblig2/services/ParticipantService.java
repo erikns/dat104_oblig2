@@ -49,4 +49,11 @@ public class ParticipantService {
     public ParticipantEntity getParticipant(String phone) {
         return em.find(ParticipantEntity.class, phone);
     }
+
+    public void registerPayment(String participantPhone) {
+        ParticipantEntity participant = getParticipant(participantPhone);
+        participant.setPaid(true);
+
+        em.merge(participant);
+    }
 }
