@@ -26,13 +26,18 @@ public class AdminServlet extends HttpServlet {
             throws ServletException, IOException {
         //her tar jeg i mot data fra adminside som skal behandles
 
-        String id = req.getParameter("id");
+        SessionHelper sessionHelper = new SessionHelper(req.getSession());
+        if (sessionHelper.isAdmin()) {
+            String id = req.getParameter("id");
 
-        //TODO legge til behandling i stedet for utskrift av id her
-        out.println(id);
+            // TODO legge til behandling i stedet for utskrift av id her
+            out.println(id);
+            // participantService.registerPayment(id);
+        } else {
+            redirectNotLoggedIn(resp);
+        }
 
-
-        //resp.sendRedirect("admin");
+        resp.sendRedirect("admin");
     }
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -49,9 +54,12 @@ public class AdminServlet extends HttpServlet {
             req.getRequestDispatcher("WEB-INF/adminside.jsp").forward(req, resp);
         }else{
             //innbrudd paa side
-            resp.sendRedirect("adminlogin?msg=" + URLEncoder.encode("Du må logge inn som admin " +
-                    "for å bruke denne funksjonen", "UTF-8"));
+            redirectNotLoggedIn(resp);
         }
     }
 
+    private void redirectNotLoggedIn(HttpServletResponse resp) throws IOException {
+        resp.sendRedirect("adminlogin?msg=" + URLEncoder.encode("Du må logge inn som admin " +
+                "for å bruke denne funksjonen", "UTF-8"));
+    }
 }
