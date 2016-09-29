@@ -15,10 +15,18 @@ public class ParticipantService {
     @PersistenceContext(name = "partyDb")
     private EntityManager em;
 
+    /**
+     * Sign a participant up for the party
+     * @param participant Participant to sign up for the party
+     */
     public void signup(ParticipantEntity participant) {
         em.persist(participant);
     }
 
+    /**
+     * Get all participants represented by ParticipantPublicViewModel instances.
+     * @return The list of participants
+     */
     public List<ParticipantPublicViewModel> getParticipantsPublic() {
         List<ParticipantPublicViewModel> result = new ArrayList<>();
 
@@ -33,6 +41,11 @@ public class ParticipantService {
         return result;
     }
 
+    /**
+     * Get all participants represented directly by the entity classes. This is intended to be used
+     * only by the admin part of the application
+     * @return List of participants
+     */
     public List<ParticipantEntity> getAllParticipants() {
         Query query = em.createQuery("SELECT p FROM ParticipantEntity p");
         List queryResult = query.getResultList();
@@ -46,10 +59,19 @@ public class ParticipantService {
         return resultList;
     }
 
+    /**
+     * Return a single participant. Intended to be used only by admin parts of the application.
+     * @param phone The participant phone number
+     * @return The participant entity
+     */
     public ParticipantEntity getParticipant(String phone) {
         return em.find(ParticipantEntity.class, phone);
     }
 
+    /**
+     * Register payment for single participant. Intended to be used only by admin parts of the application.
+     * @param participantPhone The participant phone number (id) to register payment for
+     */
     public void registerPayment(String participantPhone) {
         ParticipantEntity participant = getParticipant(participantPhone);
         participant.setPaid(true);
