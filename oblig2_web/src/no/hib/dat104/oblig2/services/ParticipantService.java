@@ -49,8 +49,4 @@ public class ParticipantService {
     public ParticipantEntity getParticipant(String phone) {
         return em.find(ParticipantEntity.class, phone);
     }
-
-    public void updateParticipant(ParticipantEntity participant) {
-        em.merge(participant);
-    }
 }

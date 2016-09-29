@@ -1,6 +1,6 @@
 package no.hib.dat104.oblig2.servlets;
 
-import no.hib.dat104.oblig2.models.ParticipantPublicViewModel;
+import no.hib.dat104.oblig2.models.ParticipantEntity;
 import no.hib.dat104.oblig2.services.ParticipantService;
 import no.hib.dat104.oblig2.util.SessionHelper;
 
@@ -42,7 +42,7 @@ public class AdminServlet extends HttpServlet {
         if (sessionHelper.isAdmin()){
             //happy path
             // retrieve list of participants from database
-            List<ParticipantPublicViewModel> participants = participantService.getParticipantsPublic();
+            List<ParticipantEntity> participants = participantService.getAllParticipants();
             req.setAttribute("vm", participants);
             req.setAttribute("loggedInUser", sessionHelper.getLoggedInUser());
 

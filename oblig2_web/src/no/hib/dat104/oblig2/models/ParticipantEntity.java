@@ -16,14 +16,6 @@ public class ParticipantEntity {
 
     public ParticipantEntity() {}
 
-    public ParticipantEntity(String phone, String firstName, String lastName, String gender, boolean paid) {
-        this.phone = phone;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.gender = gender;
-        this.paid = paid;
-    }
-
     public String getPhone() {
         return phone;
     }
