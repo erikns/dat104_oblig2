@@ -47,7 +47,7 @@ public class ParticipantService {
      * @return List of participants
      */
     public List<ParticipantEntity> getAllParticipants() {
-        Query query = em.createQuery("SELECT p FROM ParticipantEntity p");
+        Query query = em.createQuery("SELECT p FROM ParticipantEntity p ORDER BY p.firstName, p.lastName");
         List queryResult = query.getResultList();
 
         List<ParticipantEntity> resultList = new ArrayList<>();

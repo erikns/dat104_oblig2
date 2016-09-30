@@ -21,9 +21,11 @@
             <tr>
                 <td>${participant.firstName} ${participant.lastName}</td>
                 <td>
-                    <c:set var="phone" value="${participant.phone}" />
-                    <fmt:formatNumber type="number" pattern="000,00,000" value="${phone}" var="nf" />
-                    ${fn:replace(nf, ",", " ")}
+                    <c:set var="phone" value="${participant.phone} "/>
+                    <c:set var="ph0" value="${fn:substring(phone, 0, 3)}" />
+                    <c:set var="ph1" value="${fn:substring(phone, 3, 5)}" />
+                    <c:set var="ph2" value="${fn:substring(phone, 5, 8)}" />
+                    ${ph0} ${ph1} ${ph2}
                 </td>
 
                 <%--Hvem har betalt --%>
