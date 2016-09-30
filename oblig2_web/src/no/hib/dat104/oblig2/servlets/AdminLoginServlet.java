@@ -1,5 +1,6 @@
 package no.hib.dat104.oblig2.servlets;
 
+import no.hib.dat104.oblig2.util.Config;
 import no.hib.dat104.oblig2.util.SessionHelper;
 
 import javax.servlet.ServletException;
@@ -28,7 +29,7 @@ public class AdminLoginServlet extends HttpServlet {
             resp.sendRedirect("admin");
         }else{
             // invalid password
-            resp.sendRedirect("adminlogin?msg=" + URLEncoder.encode("Feil passord. Prøv igjen.", "UTF-8"));
+            resp.sendRedirect("adminlogin?msg=" + URLEncoder.encode("Feil passord. Prøv igjen.", Config.URL_ENCODING));
         }
     }//doPost
 

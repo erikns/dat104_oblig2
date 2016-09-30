@@ -1,5 +1,7 @@
 package no.hib.dat104.oblig2.models;
 
+import no.hib.dat104.oblig2.util.Config;
+
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -122,7 +124,7 @@ public class SignupDataViewModel {
 
     private static String urlEncodeParameter(String param, String value) {
         try {
-            String encodedValue = URLEncoder.encode(value, "UTF-8");
+            String encodedValue = URLEncoder.encode(value, Config.URL_ENCODING);
             return param + "=" + encodedValue;
         } catch (UnsupportedEncodingException e) {
             return param + "=" + "unsuppEncoding";

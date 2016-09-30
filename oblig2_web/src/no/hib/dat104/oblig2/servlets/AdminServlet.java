@@ -2,6 +2,7 @@ package no.hib.dat104.oblig2.servlets;
 
 import no.hib.dat104.oblig2.models.ParticipantEntity;
 import no.hib.dat104.oblig2.services.ParticipantService;
+import no.hib.dat104.oblig2.util.Config;
 import no.hib.dat104.oblig2.util.SessionHelper;
 
 import javax.ejb.EJB;
@@ -54,7 +55,7 @@ public class AdminServlet extends HttpServlet {
     }
 
     private void redirectNotLoggedIn(HttpServletResponse resp) throws IOException {
-        resp.sendRedirect("adminlogin?msg=" + URLEncoder.encode("Du må logge inn som admin " +
-                "for å bruke denne funksjonen", "UTF-8"));
+        resp.sendRedirect("adminlogin?msg=" + URLEncoder.encode("Logg inn for tilgang til denne " +
+                "funksjonen", Config.URL_ENCODING));
     }
 }

@@ -2,6 +2,7 @@ package no.hib.dat104.oblig2.servlets;
 
 
 import no.hib.dat104.oblig2.services.ParticipantService;
+import no.hib.dat104.oblig2.util.Config;
 import no.hib.dat104.oblig2.util.SessionHelper;
 import no.hib.dat104.oblig2.models.ParticipantEntity;
 
@@ -38,7 +39,7 @@ public class LoginServlet extends HttpServlet{
             resp.sendRedirect("list");
         } else {
             // probably not signed up.
-            resp.sendRedirect("login?msg=" + URLEncoder.encode("Feil mobilnummer. Er du påmeldt?", "UTF-8"));
+            resp.sendRedirect("login?msg=" + URLEncoder.encode("Feil mobilnummer. Er du påmeldt?", Config.URL_ENCODING));
         }
     }
 }
