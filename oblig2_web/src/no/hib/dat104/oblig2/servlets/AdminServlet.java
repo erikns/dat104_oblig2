@@ -30,9 +30,8 @@ public class AdminServlet extends HttpServlet {
         if (sessionHelper.isAdmin()) {
             String id = req.getParameter("id");
 
-            // TODO legge til behandling i stedet for utskrift av id her
             out.println(id);
-            // participantService.registerPayment(id);
+            participantService.registerPayment(id);
         } else {
             redirectNotLoggedIn(resp);
         }
