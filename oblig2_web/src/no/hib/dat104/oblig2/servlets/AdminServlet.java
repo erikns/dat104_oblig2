@@ -14,8 +14,6 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.List;
 
-import static java.lang.System.out;
-
 
 @WebServlet("/admin")
 public class AdminServlet extends HttpServlet {
@@ -29,8 +27,6 @@ public class AdminServlet extends HttpServlet {
         SessionHelper sessionHelper = new SessionHelper(req.getSession());
         if (sessionHelper.isAdmin()) {
             String id = req.getParameter("id");
-
-            out.println(id);
             participantService.registerPayment(id);
         } else {
             redirectNotLoggedIn(resp);
