@@ -51,7 +51,7 @@ public class SignupServlet extends HttpServlet {
             req.getRequestDispatcher("WEB-INF/signup-ok.jsp").forward(req, resp);
         } else {
             // error validating. send redirect with url encoded vm
-            resp.sendRedirect("/signup?" + vm.urlEncode());
+            resp.sendRedirect("signup?" + vm.urlEncode());
         }
     }
 }
