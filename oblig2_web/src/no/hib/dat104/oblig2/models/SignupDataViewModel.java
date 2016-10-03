@@ -58,7 +58,8 @@ public class SignupDataViewModel {
 
     private static String getStringParameter(HttpServletRequest req, String parameter) {
         if (req.getParameter(parameter) != null) {
-            return req.getParameter(StringEscapeUtils.escapeHtml4(parameter)); //TODO la inn escape her
+            String value = req.getParameter(parameter);
+            return StringEscapeUtils.escapeHtml4(value);
         } else {
             return "";
         }
