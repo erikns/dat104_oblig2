@@ -115,3 +115,6 @@ local.properties
 .idea/
 
 resources.xml
+
+.DS_Store
+
