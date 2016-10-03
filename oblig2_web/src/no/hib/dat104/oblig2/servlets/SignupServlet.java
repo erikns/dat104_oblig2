@@ -1,14 +1,11 @@
 package no.hib.dat104.oblig2.servlets;
 
-import no.hib.dat104.oblig2.services.ParticipantService;
-import no.hib.dat104.oblig2.util.SessionHelper;
 import no.hib.dat104.oblig2.models.ParticipantEntity;
 import no.hib.dat104.oblig2.models.SignupDataViewModel;
+import no.hib.dat104.oblig2.services.ParticipantService;
+import no.hib.dat104.oblig2.util.SessionHelper;
 
-import javax.persistence.EntityExistsException;
-import javax.persistence.PersistenceException;
 import javax.ejb.EJB;
-import javax.persistence.Entity;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -51,8 +48,9 @@ public class SignupServlet extends HttpServlet {
                 sessionHelper.logIn(participantEntity.getPhone());
 
                 req.getRequestDispatcher("WEB-INF/signup-ok.jsp").forward(req, resp);
-            } catch (EntityExistsException e) {
-                resp.sendRedirect("error");
+            } catch (Exception e) {
+                vm.setMessage("Er du allerede påmeldt?");
+                resp.sendRedirect("signup?" + vm.urlEncode());
             }
         } else {
             // error validating. send redirect with url encoded vm

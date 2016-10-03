@@ -16,6 +16,7 @@ public class SignupDataViewModel {
     private String phoneError = "";
     private String gender = "";
     private String genderError = "";
+    private String msg = "";
 
     private SignupDataViewModel() { }
 
@@ -50,6 +51,7 @@ public class SignupDataViewModel {
         vm.setPhoneError(getStringParameter(req, "phoneError"));
         vm.setGender(getStringParameter(req, "gender"));
         vm.setGenderError(getStringParameter(req, "genderError"));
+        vm.setMessage(getStringParameter(req, "message"));
 
         return vm;
     }
@@ -120,7 +122,8 @@ public class SignupDataViewModel {
                 urlEncodeParameter("phone", phone) + "&" +
                 urlEncodeParameter("phoneError", phoneError) + "&" +
                 urlEncodeParameter("gender", gender) + "&" +
-                urlEncodeParameter("genderError", genderError);
+                urlEncodeParameter("genderError", genderError) + "&" +
+                urlEncodeParameter("message", msg);
     }
 
     private static String urlEncodeParameter(String param, String value) {
@@ -194,5 +197,13 @@ public class SignupDataViewModel {
 
     private void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public void setMessage(String message) {
+        this.msg = message;
+    }
+
+    public String getMessage() {
+        return msg;
     }
 }

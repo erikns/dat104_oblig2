@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="vm" scope="request" type="no.hib.dat104.oblig2.models.SignupDataViewModel"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -15,6 +16,7 @@
     <h1>Påmeldingsskjema</h1>
     <p>Fyll ut skjemaet for å melde deg på festen</p>
 
+    <span class="error">${vm.message}</span>
     <form method="post" action="signup">
         <p>Fornavn: <input type="text" name="firstName" value="${vm.firstName}">
             <span class="error">${vm.firstNameError}</span></p>
