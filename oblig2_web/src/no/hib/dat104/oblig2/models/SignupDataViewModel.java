@@ -2,6 +2,7 @@ package no.hib.dat104.oblig2.models;
 
 import no.hib.dat104.oblig2.util.Config;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -55,7 +56,7 @@ public class SignupDataViewModel {
 
     private static String getStringParameter(HttpServletRequest req, String parameter) {
         if (req.getParameter(parameter) != null) {
-            return req.getParameter(parameter); // TODO: escape?
+            return req.getParameter(StringEscapeUtils.escapeHtml4(parameter));
         } else {
             return "";
         }
