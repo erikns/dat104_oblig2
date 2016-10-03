@@ -5,7 +5,10 @@ import no.hib.dat104.oblig2.util.SessionHelper;
 import no.hib.dat104.oblig2.models.ParticipantEntity;
 import no.hib.dat104.oblig2.models.SignupDataViewModel;
 
+import javax.persistence.EntityExistsException;
+import javax.persistence.PersistenceException;
 import javax.ejb.EJB;
+import javax.persistence.Entity;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,22 +36,24 @@ public class SignupServlet extends HttpServlet {
         req.setAttribute("vm", vm);
 
         if (validationResult) {
-            // happy path
-            ParticipantEntity participantEntity = new ParticipantEntity();
-            participantEntity.setFirstName(vm.getFirstName());
-            participantEntity.setLastName(vm.getLastName());
-            participantEntity.setPhone(vm.getPhone());
-            participantEntity.setGender(vm.getGender());
-            participantEntity.setPaid(false); // initially not paid
+            try {
+                // happy path
+                ParticipantEntity participantEntity = new ParticipantEntity();
+                participantEntity.setFirstName(vm.getFirstName());
+                participantEntity.setLastName(vm.getLastName());
+                participantEntity.setPhone(vm.getPhone());
+                participantEntity.setGender(vm.getGender());
+                participantEntity.setPaid(false); // initially not paid
 
-            participantService.signup(participantEntity);
+                participantService.signup(participantEntity);
 
-            SessionHelper sessionHelper = new SessionHelper(req.getSession());
-            sessionHelper.logIn(participantEntity.getPhone());
+                SessionHelper sessionHelper = new SessionHelper(req.getSession());
+                sessionHelper.logIn(participantEntity.getPhone());
 
-            // TODO: Handle already signed up case (EntityExistsException)
-
-            req.getRequestDispatcher("WEB-INF/signup-ok.jsp").forward(req, resp);
+                req.getRequestDispatcher("WEB-INF/signup-ok.jsp").forward(req, resp);
+            } catch (EntityExistsException e) {
+                resp.sendRedirect("error");
+            }
         } else {
             // error validating. send redirect with url encoded vm
             resp.sendRedirect("signup?" + vm.urlEncode());
